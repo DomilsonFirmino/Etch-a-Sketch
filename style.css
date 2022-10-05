@@ -1,0 +1,16 @@
+:root{
+    --primary: hsl(0,0,0);
+    --secondary: hsl(100,100,100);
+
+    --fw-bold: 800;
+    --fw-regular: 400;
+    --fw-medium: 600;
+
+    --fs: 1.5rem;
+}
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
