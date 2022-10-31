@@ -1,16 +1,75 @@
 :root{
-    --primary: hsl(0,0,0);
-    --secondary: hsl(100,100,100);
+    --primary: hsl(0, 0%, 0%);
+    --secondary: hsl(0, 0%, 100%);
 
-    --fw-bold: 800;
-    --fw-regular: 400;
-    --fw-medium: 600;
+    --fw-900: 900;
+    --fw-700: 700;
+    --fw-400: 400;
 
-    --fs: 1.5rem;
+    --fs-normal: 1.125rem;
+    --fs-medium: 1.5rem;
+    --fs-big: 2.5rem;
+
+
+    --grid-size: 16;
+
+    --border-radius: .3em;
+
+    --clr-colorpicker: black;
+
 }
 *, *::after, *::before{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+}
+
+.container{
+    width: 80%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.row{
+    display: flex;
+    gap: .5em;
+    width: 100%;
+}
+
+.side{
+    flex-direction: column;
+}
+.side button{
+    font-size: 18px;
+    border: none;
+    padding: .5em 1em;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+
+
+
+
+main{
+    padding-top: 4em;
+    text-align: center;
+}
+h1{
+    margin-bottom: .5em;
+    font-weight: bold;
+}
+.left .color{
+    width: 5em;
+    height: 5em;
+    background-color: var(--clr-colorpicker);
+    margin: 0 auto;
+    margin-bottom: 1em;
+    cursor: pointer;
+}
+.right{
+    background-color: black;
+    height: 30em;
+    margin-bottom: 1.5em;
 }
