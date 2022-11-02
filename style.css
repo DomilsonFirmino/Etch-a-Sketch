@@ -24,32 +24,36 @@
     box-sizing: border-box;
 }
 
+
 .container{
     width: 80%;
-    max-width: 100%;
+    max-width: 55em;
     margin: 0 auto;
 }
 .row{
     display: flex;
-    gap: .5em;
+    gap: .8em;
     width: 100%;
 }
 
 .side{
     flex-direction: column;
+    flex: 1;
 }
 .side button{
-    font-size: 18px;
+    
+    font-size: 1rem;
     border: none;
-    padding: .5em 1em;
+    padding: 1em;
+
     border-radius: var(--border-radius);
     font-weight: 700;
-    cursor: pointer;
+
+    border: 2px solid black;
+    background: transparent;
+    font-weight: bold;
+
 }
-
-
-
-
 
 
 main{
@@ -60,16 +64,129 @@ h1{
     margin-bottom: .5em;
     font-weight: bold;
 }
+span{
+    padding: 0 .08em;
+    margin-inline: .05em;
+    background-color: black;
+    color: white;
+
+}
 .left .color{
-    width: 5em;
-    height: 5em;
+
+    padding: 3rem;
     background-color: var(--clr-colorpicker);
     margin: 0 auto;
-    margin-bottom: 1em;
     cursor: pointer;
 }
+
 .right{
-    background-color: black;
     height: 30em;
-    margin-bottom: 1.5em;
+    margin-bottom: 1em;
+    border: 2px solid black;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(var(--grid-size), 1fr);
+    grid-template-rows: repeat(var(--grid-size), 1fr);
+}
+
+.card{
+    background-color: white;
+}
+
+.grid.toogle{
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+}
+.card.toggle{
+    border-right: 2px solid black;
+    border-top: 2px solid black;
+}
+
+.size{
+    margin: .6em;
+}
+
+.active{
+    position: relative;
+}
+.active::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: .1em .2em;
+    border: 2px solid red;
+}   
+
+@media screen and (min-width: 850px){
+
+    .body{
+        display: flex;
+        gap: 2em;
+        justify-content: space-between;
+    }
+    .row{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .side{
+        flex-direction: column;
+    }
+    .side button{
+
+       font-size: 1rem;
+       border: none;
+       padding: .6em;
+       border-radius: var(--border-radius);
+
+       transition: .2s ease-in-out .1s;
+
+       border: 2px solid black;
+       background: transparent;
+
+    }
+    button:hover{
+
+        cursor: pointer;
+        transform: scale(1.09);
+        background: black;
+        color: white;
+
+        font-size: 1.01rem;
+
+    }
+    
+    main{
+        padding-top: 4em;
+        text-align: centers;
+    }
+    h1{
+        margin-bottom: .5em;
+        font-weight: bold;
+    }
+
+    .left{
+        width: 25%;
+        align-self: center;
+    }
+    .left .color{
+
+        order: -1;
+        padding: 2.5em;
+        background-color: var(--clr-colorpicker);
+        margin: 0 auto;
+        margin-bottom: 1em;
+    }
+
+    .right{
+        width: 90%;
+        height: 30em;
+        order: 2;
+        margin-bottom: 0;
+    }
 }
