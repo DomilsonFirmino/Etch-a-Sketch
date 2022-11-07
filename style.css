@@ -55,9 +55,13 @@
 
 }
 
+body{
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
 
 main{
-    padding-top: 4em;
     text-align: center;
 }
 h1{
@@ -71,14 +75,6 @@ span{
     color: white;
 
 }
-.left .color{
-
-    padding: 3rem;
-    background-color: var(--clr-colorpicker);
-    margin: 0 auto;
-    cursor: pointer;
-}
-
 .right{
     height: 30em;
     margin-bottom: 1em;
@@ -174,15 +170,6 @@ span{
         width: 25%;
         align-self: center;
     }
-    .left .color{
-
-        order: -1;
-        padding: 2.5em;
-        background-color: var(--clr-colorpicker);
-        margin: 0 auto;
-        margin-bottom: 1em;
-    }
-
     .right{
         width: 90%;
         height: 30em;

@@ -1,9 +1,17 @@
+
+// hsl(0, 100%, 50%) - red;
+// hsl(39, 100%, 50%) - orange
+// hsl(120, 100%, 25%) - green
+// hsl(240, 100%, 50%) - blue
+// hsl(275, 100%, 25%) - indigo
+// hsl(300, 76%, 72%) - violet
+
+let rainbowColors = ["hsl(0, 100%, 50%)","hsl(39, 100%, 50%)","hsl(120, 100%, 25%)","hsl(240, 100%, 50%)","hsl(275, 100%, 25%)","hsl(300, 76%, 72%)"]
 const grid = document.querySelector('.right')
 const body = document.querySelector('body')
 
 
 const rainbow = document.querySelector('.rainbow')
-const shading = document.querySelector('.shading')
 const erase = document.querySelector('.erase')
 
 const colorPicker = document.querySelector('.color')
@@ -17,7 +25,6 @@ let gridSize = getComputedStyle(document.documentElement).getPropertyValue('--gr
 
 let click = false;
 let eClick = false;
-let shadingClick = false;
 let rainbowClick = false;
 
 
@@ -27,26 +34,34 @@ body.addEventListener('click', ()=>{
 })
 rainbow.addEventListener('click',()=>{
     click = !click
+    rainbowClick = !rainbowClick
+
+    rainbow.classList.toggle('active')
+    if(rainbowClick){
+        eClick = false;
+        if(erase.classList.contains('active')){
+            erase.classList.remove('active')
+        }
+    }
 })
 
-shading.addEventListener('click',()=>{
-    click = !click
-})
 
 erase.addEventListener('click',()=>{
     click = !click
     eClick = !eClick
     erase.classList.toggle('active')
-})
-
-colorPicker.addEventListener('click',()=>{
-    click = !click
+    if(erase){
+        rainbowClick = false;
+        if(rainbow.classList.contains('active')){
+            rainbow.classList.remove('active')
+        }
+    }
 })
 
 clear.addEventListener('click',()=>{
     click = !click
     for(let i = 0; i<grid.childElementCount; i++){
-        grid.children[i].style.backgroundColor = "white";
+        grid.children[i].style.backgroundColor = "";
     }
 })
 
@@ -70,8 +85,18 @@ function generateGrid(gSize){
         let a = document.createElement('div');
         a.classList.add('card');
         a.addEventListener('mouseover',(e)=>{
+            let color;
+
+            if(rainbowClick){
+                color = randomcolor()
+            }else{
+                color = 'black'
+            }
+            
             if(click && eClick == false){
-                a.style.backgroundColor = 'black'
+                if(!a.style.backgroundColor){
+                    a.style.backgroundColor = color
+                }
             }else if(click && eClick == true){
                 a.style.backgroundColor = 'white'
             }
@@ -81,5 +106,7 @@ function generateGrid(gSize){
     grid.classList.add('grid')
     size.innerText = gSize + " X " +gSize;
 }
-
-generateGrid(gridSize);
+function randomcolor(){
+    return rainbowColors[Math.floor(Math.random() * rainbowColors.length)]
+}
+generateGrid(gridSize)
